@@ -27,15 +27,17 @@ root.resizable('False','False')
 width,height = 250,190
 root.geometry(f"{width}x{height}")
 
-timer_val = 5 # Timer for each iteration
+timer_val = 5 # Time for each iteration
 timer_repeat = 2 # Total num of iterations
+
 value_inside = StringVar(root)
 options_list = ["Voice1", "Voice2", "Voice3"]
 default = "Voice1.mp3"
 
-# -----------------Important Functions---------------!!!
+# -----------------Important Functions---------------!!!  
 
 def library():
+
         if value_inside.get() == '':
 
                 mixer.music.load(default)
@@ -45,10 +47,8 @@ def library():
         if bottom_plate['text'] == 'Eye Care : OFF':
                 pass
         else:
-                
                 mixer.music.play()
 
-        
 def timer():
         t = Timer(timer_val,library)
         t.start()
@@ -69,7 +69,7 @@ def text_update():
                         
         else:
                 bottom_plate.config(text='Eye Care : OFF')
-                bottom_plate.config(bg='green')
+                bottom_plate.config(bg='red')
 
         if Main_button['text'] == 'Activate':
                 Main_button.config(text='Activated')
@@ -82,7 +82,11 @@ def text_update():
 
 def options():
         mixer.music.unload()
+        bottom_plate.config(text='Eye Care : OFF')
+        bottom_plate.config(bg='red')
+
         global value_inside
+
         root = Tk()
         root.title("Options")
         root.resizable('False','False')
@@ -91,15 +95,9 @@ def options():
         
         Title = Label(root,text="Select From Voices Below",font="sans 10")
         Title.pack(pady=10)
-
-        # value_inside = StringVar(root)
-        # value_inside.set(options_list[0])
         
-        question_menu = OptionMenu(root, value_inside, *options_list)
-        question_menu.pack(pady=6)
-        
-
-
+        choose_voice = OptionMenu(root, value_inside, *options_list)
+        choose_voice.pack(pady=6)
 
 def about():
         root = Tk()
@@ -135,7 +133,6 @@ menubar.add_command(label='Options',command=options)
 menubar.add_command(label='About',command=about)
 
 root.config(menu=menubar)
-# root.bind('<Button-1>',text_update)
 
 bottom_plate = Label(text="Eye Care : OFF", bg="Red",
                      fg="White", font="sans 9 italic")
