@@ -8,7 +8,7 @@ from os import name
 from plyer import notification
 
 # -----------------Initializing---------------!!!
-def Work():
+def setPath():
   
     # for windows
     if name == 'nt':
@@ -18,8 +18,9 @@ def Work():
     else:
         username = os.getlogin()
         _ = os.chdir(f'/home/{username}/Projects/Save-My-Eyes/App/')
-Work()
 
+
+setPath()
 mixer.init()
 root = Tk()
 root.title("Save My Eyes !")
@@ -48,17 +49,26 @@ def library():
                 pass
         else:
                 mixer.music.play()
+             
 
 def timer():
         t = Timer(timer_val,library)
         t.start()
+
         print("Timer Pressed !")
         text_update()
-        notify()
+        notify_me("0")
+        
+        s = Timer(timer_val+6,default_state)
+        s.start()
 
-def notify():
-        notification.notify(title = "Service Activated !",message="I will remind you after 20 mins till then, do the work baby!" ,timeout=4)
 
+def notify_me(type_notify):
+        if type_notify == "0":
+                notification.notify(title = "Service Activated !",message="I will remind you after 20 mins till then, do the work !" ,timeout=4)
+        elif type_notify == "1":
+                notification.notify(title = "Service Stopped !",message="Re-activate, if needed !" ,timeout=4)
+        
 def text_update():
         
         if bottom_plate['text'] == 'Eye Care : OFF':
@@ -79,12 +89,20 @@ def text_update():
       
 
 # -----------------Other Windows---------------!!!
-
-def options():
-        mixer.music.unload()
+def default_state():
+        notify_me("1")
+        Main_button.config(text='Activate')
         bottom_plate.config(text='Eye Care : OFF')
         bottom_plate.config(bg='red')
 
+def options():
+        mixer.music.stop()
+        mixer.music.unload()
+
+        Main_button.config(text='Activate')
+        bottom_plate.config(text='Eye Care : OFF')
+        bottom_plate.config(bg='red')
+        
         global value_inside
 
         root = Tk()
@@ -110,20 +128,8 @@ def about():
         Message.pack(pady=10)
 
         root.mainloop()
-        print("Working...")
 
-
-# -----------------Menus & Buttons---------------!!!
-v = StringVar(root, "1")
-values = {"Enable" : "1",
-          "Disable" : "2",
-          }
-
-for (text, value) in values.items():
-    Radiobutton(root, text = text, variable = v,
-                value = value, indicator = 0,
-                background = "light blue")
- 
+# -----------------Menus & Buttons---------------!!! 
 
 Main_button = Button(root,text='Activate',width=10,command=timer)
 Main_button.pack(pady=60)
@@ -140,5 +146,4 @@ bottom_plate.pack(side=BOTTOM, fill=X)
     
 # ------------Program-Starts-Here--------------
 if __name__=="__main__":
-    
     root.mainloop()
