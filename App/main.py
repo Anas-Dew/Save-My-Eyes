@@ -32,7 +32,7 @@ timer_val = 5 # Time for each iteration
 timer_repeat = 2 # Total num of iterations
 
 value_inside = StringVar(root)
-options_list = ["Voice1", "Voice2", "Voice3"]
+options_list = ["Voice1", "Voice2"]
 default = "Voice1.mp3"
 
 # -----------------Important Functions---------------!!!  
