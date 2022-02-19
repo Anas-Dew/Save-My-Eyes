@@ -90,6 +90,7 @@ def text_update():
 
 # -----------------Other Windows---------------!!!
 def default_state():
+        # if __name__== "__timer__":
         notify_me("1")
         Main_button.config(text='Activate')
         bottom_plate.config(text='Eye Care : OFF')
@@ -98,11 +99,8 @@ def default_state():
 def options():
         mixer.music.stop()
         mixer.music.unload()
+        default_state()
 
-        Main_button.config(text='Activate')
-        bottom_plate.config(text='Eye Care : OFF')
-        bottom_plate.config(bg='red')
-        
         global value_inside
 
         root = Tk()
