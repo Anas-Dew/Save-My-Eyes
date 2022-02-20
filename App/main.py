@@ -12,7 +12,7 @@ def setPath():
   
     # for windows
     if name == 'nt':
-        _ = os.chdir('C:/Projects/Save-My-Eyes/App/')
+        _ = os.chdir('C:/Save-My-Eyes/App/')
   
     # for mac and linux(here, os.name is 'posix')
     else:
@@ -28,8 +28,8 @@ root.resizable('False','False')
 width,height = 250,190
 root.geometry(f"{width}x{height}")
 
-timer_val = 5 # Time for each iteration
-timer_repeat = 2 # Total num of iterations
+timer_val = 1200 # Time for each iteration
+# timer_repeat = 2 # Total num of iterations
 
 value_inside = StringVar(root)
 options_list = ["Voice1", "Voice2"]
@@ -75,8 +75,7 @@ def text_update():
 
                 bottom_plate.config(text='Eye Care :  ON')
                 bottom_plate.config(bg='green')
-                                            
-                        
+                     
         else:
                 bottom_plate.config(text='Eye Care : OFF')
                 bottom_plate.config(bg='red')
