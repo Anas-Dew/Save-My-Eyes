@@ -2,6 +2,10 @@
 Save your eyes from being stressed. How? 20/20/20 Rule. 
 Work on screens for 20 mins and look 20 miter away for 20 secs. ⌚️🌠👁️
 It's scientific. This app made it easy.
+# Download Here
+* Download from https://bit.ly/3p3K9mi
+* Extract to C:/
+* Run Py file or EXE file given in App/
 
 # Features ⭐
 * Select from different voices 🗣️
