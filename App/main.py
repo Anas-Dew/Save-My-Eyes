@@ -23,6 +23,8 @@ def setPath():
 setPath()
 mixer.init()
 root = Tk()
+photo = PhotoImage(file = "icon_.png")
+root.iconphoto(False, photo)
 root.title("Save My Eyes !")
 root.resizable('False','False')
 width,height = 250,190
