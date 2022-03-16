@@ -11,13 +11,16 @@ from plyer import notification
 def setPath():
   
     # for windows
+    current_dir = os.getcwd()
+    print("Current Directory ---> ", current_dir)
+
     if name == 'nt':
-        _ = os.chdir('C:/Save-My-Eyes/App/')
+        _ = os.chdir(f'{current_dir}/Save-My-Eyes/App/')
   
     # for mac and linux(here, os.name is 'posix')
     else:
         username = os.getlogin()
-        _ = os.chdir(f'/home/{username}/Projects/Save-My-Eyes/App/')
+        _ = os.chdir(f'{current_dir}/Save-My-Eyes/App/')
 
 
 setPath()
@@ -59,7 +62,7 @@ def timer():
 
         print("Timer Pressed !")
         text_update()
-        notify_me("0")
+        # notify_me("0")
         
         s = Timer(timer_val+6,default_state)
         s.start()
@@ -77,11 +80,12 @@ def text_update():
 
                 bottom_plate.config(text='Eye Care :  ON')
                 bottom_plate.config(bg='green')
+                notify_me("0")
                      
         else:
                 bottom_plate.config(text='Eye Care : OFF')
                 bottom_plate.config(bg='red')
-
+                notify_me("1")
         if Main_button['text'] == 'Activate':
                 Main_button.config(text='Activated')
         else:
@@ -117,12 +121,18 @@ def options():
         choose_voice.pack(pady=6)
 
 def about():
+        # from PIL import ImageTk, Image
         root = Tk()
         root.title("About")
         root.resizable('False','False')
         width,height = 210,150
         root.geometry(f"{width}x{height}")
 
+        # img = ImageTk.PhotoImage(file="my-eyes-my-eyes.gif", format="gif -index 2")
+
+        # Create a Label Widget to display the text or Image
+        # label = Label(root, image = img)
+        # label.pack()
         Message = Label(root,text="Hello Geek !",font="sans 10")
         Message.pack(pady=10)
 
