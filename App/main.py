@@ -1,34 +1,30 @@
 from threading import Timer
-from time import sleep
 from tkinter import ttk
 from pygame import mixer
 from tkinter import * 
 import os
 from os import name
 from plyer import notification
-
 # -----------------Initializing---------------!!!
 def setPath():
-  
     # for windows
     current_dir = os.getcwd()
     print("Current Directory ---> ", current_dir)
 
     if name == 'nt':
-        _ = os.chdir(f'{current_dir}/Save-My-Eyes/App/')
+        _ = os.chdir(f'{current_dir}\\Save-My-Eyes\\App\\')
   
     # for mac and linux(here, os.name is 'posix')
     else:
-        username = os.getlogin()
-        _ = os.chdir(f'{current_dir}/Save-My-Eyes/App/')
-
+        _ = os.chdir(f'{current_dir}')
 
 setPath()
+print(os.getcwd())
 mixer.init()
 root = Tk()
 photo = PhotoImage(file = "icon_.png")
 root.iconphoto(False, photo)
-root.title("Save My Eyes !")
+root.title("Save My Eyes")
 root.resizable('False','False')
 width,height = 250,190
 root.geometry(f"{width}x{height}")
@@ -120,23 +116,6 @@ def options():
         choose_voice = OptionMenu(root, value_inside, *options_list)
         choose_voice.pack(pady=6)
 
-def about():
-        # from PIL import ImageTk, Image
-        root = Tk()
-        root.title("About")
-        root.resizable('False','False')
-        width,height = 210,150
-        root.geometry(f"{width}x{height}")
-
-        # img = ImageTk.PhotoImage(file="my-eyes-my-eyes.gif", format="gif -index 2")
-
-        # Create a Label Widget to display the text or Image
-        # label = Label(root, image = img)
-        # label.pack()
-        Message = Label(root,text="Hello Geek !",font="sans 10")
-        Message.pack(pady=10)
-
-        root.mainloop()
 
 # -----------------Menus & Buttons---------------!!! 
 
@@ -145,7 +124,6 @@ Main_button.pack(pady=60)
 
 menubar = Menu(root)
 menubar.add_command(label='Options',command=options)
-menubar.add_command(label='About',command=about)
 
 root.config(menu=menubar)
 
